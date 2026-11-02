@@ -10,6 +10,7 @@ export type RobotHeadState =
   | 'working'
   | 'happy'
   | 'error'
+  | 'sad'
   | 'sleeping';
 
 /** The head's build. Only the TV head so far. */

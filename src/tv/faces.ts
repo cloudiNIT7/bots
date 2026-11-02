@@ -90,6 +90,9 @@ const noise = (x: number) => {
 
 const CARET = ['..#..', '.#.#.', '#...#'];
 const CROSS = ['#...#', '.#.#.', '..#..', '.#.#.', '#...#'];
+const BROW_L = ['.##', '#..'];
+const BROW_R = ['##.', '..#'];
+const FROWN = ['.######.', '#......#'];
 const Z_BIG = ['####', '..#.', '.#..', '####'];
 const Z_SMALL = ['###', '.#.', '###'];
 
@@ -171,6 +174,17 @@ export const FACES: Record<RobotHeadState, (g: Grid, f: FaceParams) => void> = {
     for (let i = 0; i < 8; i++) put(g, 7 + i, i % 2 ? 11 : 12, 0.8);
   },
 
+  sad(g, f) {
+    /* low, heavy-lidded eyes looking down, brows raised toward the middle */
+    eyes(g, { ...f, lookY: f.lookY + 0.6 }, 3, 0.85, 1, 0.5);
+    sprite(g, EYE_L, 3, BROW_L, 0.55);
+    sprite(g, EYE_R, 3, BROW_R, 0.55);
+    sprite(g, 7, 11, FROWN, 0.75);
+    /* a tear rolling down under the left eye, now and then */
+    const p = (f.time / 2.6) % 1;
+    if (p < 0.6) put(g, EYE_L, 9 + Math.round((p / 0.6) * 3), 0.7 * (1 - p / 0.6));
+  },
+
   sleeping(g, f) {
     /* shut eyes, curved down at the ends, dim */
     for (const c of [EYE_L, EYE_R]) {
@@ -209,5 +223,6 @@ export const LIGHTS: Record<RobotHeadState, StateLight> = {
   working: { screen: null, ball: [110, 160, 255], pulse: (t) => ((t * 1.7) % 1 < 0.5 ? 1 : 0.35) },
   happy: { screen: null, ball: [255, 130, 200], pulse: (t) => 0.8 + 0.2 * Math.sin(t * 8) },
   error: { screen: [255, 70, 64], ball: [255, 60, 50], pulse: (t) => ((t * 3) % 1 < 0.5 ? 1 : 0.15) },
+  sad: { screen: null, ball: [110, 150, 255], pulse: (t) => 0.3 + 0.12 * Math.sin(t * 0.9) },
   sleeping: { screen: null, ball: [255, 250, 240], pulse: steady(0) },
 };

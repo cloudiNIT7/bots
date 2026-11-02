@@ -49,6 +49,7 @@ Each state has its own face on the screen, its own motion and its own antenna li
 | `working` | focused eyes looking down, a progress bar | busy bobbing, a hop with a spin now and then |
 | `happy` | `^ ^` eyes and a smile | bouncy hops |
 | `error` | red `X X` eyes | shakes its head; red light blinks |
+| `sad` | drooping eyes under raised brows, a frown and a falling tear | head hung low, slow sigh; dim blue light |
 | `sleeping` | closed eyes and rising z's | head drooped, slow breathing; light off |
 
 The list is exported as `robotHeadStates`.

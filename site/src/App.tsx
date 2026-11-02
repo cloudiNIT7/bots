@@ -20,6 +20,7 @@ const stateHints: Record<RobotHeadState, string> = {
   working: 'Head down, a progress bar filling.',
   happy: 'Bouncing, all smiles.',
   error: 'Shakes its head. Red X eyes.',
+  sad: 'Head hung low, a frown and a tear.',
   sleeping: 'Drooped and dim, dreaming in z’s.',
 };
 

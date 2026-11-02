@@ -244,6 +244,15 @@ export class RobotSim {
         freq = 1.6;
         break;
       }
+      case 'sad':
+        /* head hung low, a slow sigh rocking it side to side */
+        pitch = -0.24;
+        roll = Math.sin(t * 0.6) * 0.06;
+        yaw = Math.sin(t * 0.4) * 0.08;
+        bob = Math.sin(t * 0.9) * 0.012;
+        freq = 0.8;
+        damping = 0.85;
+        break;
       case 'sleeping':
         pitch = -0.34;
         roll = 0.13;
@@ -358,6 +367,7 @@ export function restPose(state: RobotHeadState): RobotPose {
     case 'working': return { ...base, pitch: -0.16 };
     case 'happy': return { ...base, pitch: 0.08, roll: 0.06 };
     case 'error': return { ...base, pitch: -0.06, roll: -0.05 };
+    case 'sad': return { ...base, pitch: -0.24, roll: 0.04 };
     case 'sleeping': return { ...base, pitch: -0.34, roll: 0.13, yaw: 0.06 };
     default: return { ...base, yaw: -0.18, pitch: 0.04, roll: 0.03 };
   }

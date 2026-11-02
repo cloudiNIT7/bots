@@ -9,7 +9,7 @@ import { subscribe, pointer } from './ticker';
 
 export const robotHeadShapes: RobotHeadShape[] = ['rectangle', 'square', 'circle', 'hexagon'];
 
-export const robotHeadStates: RobotHeadState[] = ['idle', 'thinking', 'searching', 'listening', 'speaking', 'working', 'happy', 'error', 'sleeping'];
+export const robotHeadStates: RobotHeadState[] = ['idle', 'thinking', 'searching', 'listening', 'speaking', 'working', 'happy', 'error', 'sad', 'sleeping'];
 
 const labels: Record<RobotHeadState, string> = {
   idle: 'idle',
@@ -20,6 +20,7 @@ const labels: Record<RobotHeadState, string> = {
   working: 'working',
   happy: 'happy',
   error: 'error',
+  sad: 'sad',
   sleeping: 'sleeping',
 };
 
